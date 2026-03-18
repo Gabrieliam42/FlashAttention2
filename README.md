@@ -7,6 +7,7 @@ All published wheels are stored directly at the repository root.
 The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used for the build:
 
 - `torch2.8.0cu128cuda12p8` means PyTorch `2.8.0+cu128`, built with CUDA toolkit `12.8`
+- `torch2.9.1cu128cuda12p8` means PyTorch `2.9.1+cu128`, built with CUDA toolkit `12.8`
 - `torch2.9.1cu130cuda13p2` means PyTorch `2.9.1+cu130`, built with CUDA toolkit `13.2`
 
 ## Published Wheels
@@ -22,6 +23,18 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 - Target GPU architecture: Ampere (`sm_80`)
 - Size: `56,682,111` bytes
 - SHA256: `590f4a177466d17fe6085b2ed00f40f4a8e92d46bc6a41d63ce036727e547e93`
+
+### `flash_attn-2.8.3-1torch2.9.1cu128cuda12p8-cp312-cp312-win_amd64.whl`
+
+- Package version: `flash_attn==2.8.3`
+- Python: `3.12.10`
+- PyTorch: `2.9.1+cu128`
+- torchvision: `0.24.1+cu128`
+- torchaudio: `2.9.1+cu128`
+- CUDA toolkit used to build: `12.8`
+- Target GPU architecture: Ampere (`sm_80`)
+- Size: `56,690,614` bytes
+- SHA256: `b94101f7ae37037335bbc51d60030870d6b7ac22282d166e11c84fff4705ceab`
 
 ### `flash_attn-2.8.3-1torch2.9.1cu130cuda13p2-cp312-cp312-win_amd64.whl`
 
@@ -52,6 +65,13 @@ python -m pip install torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2
 python -m pip install .\flash_attn-2.8.3-1torch2.8.0cu128cuda12p8-cp312-cp312-win_amd64.whl
 ```
 
+PyTorch `2.9.1+cu128`, CUDA toolkit `12.8` wheel:
+
+```powershell
+python -m pip install torch==2.9.1+cu128 torchvision==0.24.1+cu128 torchaudio==2.9.1+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
+python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu128cuda12p8-cp312-cp312-win_amd64.whl
+```
+
 PyTorch `2.9.1+cu130`, CUDA toolkit `13.2` wheels:
 
 ```powershell
@@ -79,6 +99,7 @@ Expected stack for `flash_attn-2.8.3-1torch2.8.0cu128cuda12p8-cp312-cp312-win_am
 
 - Upstream source: `https://github.com/Dao-AILab/flash-attention`
 - The CUDA 12.8 wheel was built on Windows in `.venv312` against a repo-local CUDA `12.8` toolkit assembled from NVIDIA redistrib archives under `cuda_12_8_redist/toolkit`
+- There are two CUDA 12.8 `flash_attn==2.8.3` wheels at the repo root, one for `torch==2.8.0+cu128` and one for `torch==2.9.1+cu128`
 - The Windows source build required a `setup.py` patch to add `/Zc:preprocessor` and `-allow-unsupported-compiler`
 - The CUDA 12.8 wheel was verified locally on an RTX 3090 with CUDA forward and backward tests
 - Avoid validating from the repo root if possible, because the local `triton` directory in the build workspace can shadow Torch's Triton package
