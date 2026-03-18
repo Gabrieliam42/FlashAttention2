@@ -4,12 +4,16 @@ Prebuilt Windows wheels for FlashAttention 2, built from upstream `flash-attenti
 
 All published wheels are stored directly at the repository root.
 
+The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used for the build:
+
+- `torch2p8p0cu128cuda12p8` means PyTorch `2.8.0+cu128`, built with CUDA toolkit `12.8`
+- `torch2p9p1cu130cuda13p2` means PyTorch `2.9.1+cu130`, built with CUDA toolkit `13.2`
+
 ## Published Wheels
 
-### `flash_attn-2.8.3-1cu128-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.3-1torch2p8p0cu128cuda12p8-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
-- Filename build tag: `1cu128`
 - Python: `3.12.10`
 - PyTorch: `2.8.0+cu128`
 - torchvision: `0.23.0+cu128`
@@ -19,42 +23,40 @@ All published wheels are stored directly at the repository root.
 - Size: `56,682,111` bytes
 - SHA256: `590f4a177466d17fe6085b2ed00f40f4a8e92d46bc6a41d63ce036727e547e93`
 
-This is the CUDA 12.8 / `cu128` build. The `1cu128` build tag is only there to keep it distinct from the older CUDA 13 wheel with the same upstream package version.
-
-### `flash_attn-2.8.3-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.3-1torch2p9p1cu130cuda13p2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
 - Python: `3.12.10`
-- PyTorch build stack: `2.9.1+cu130`
+- PyTorch: `2.9.1+cu130`
 - CUDA toolkit used to build: `13.2`
 - Size: `57,035,463` bytes
 - SHA256: `e602dc8936abd714a2c51baa5f10ff81fb14473f26e9af00fe02d42c99ad2005`
 
-This is the older CUDA 13 / `cu130` build.
-
-### `flash_attn-2.8.1-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.1-1torch2p9p1cu130cuda13p2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.1`
+- Python: `3.12.10`
+- PyTorch: `2.9.1+cu130`
+- CUDA toolkit used to build: `13.2`
 - Size: `28,682,044` bytes
 - SHA256: `4507b92e3e9cb24acde3d50fb002ac0ea9b374f94bf6be3f315e7162e0a95fef`
-- Build stack: PyTorch `2.9.1+cu130`, CUDA `13.2`
 
 ## Install
 
 Install the matching PyTorch stack first.
 
-CUDA 12.8 / `cu128` build:
+PyTorch `2.8.0+cu128`, CUDA toolkit `12.8` wheel:
 
 ```powershell
 python -m pip install torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
-python -m pip install .\flash_attn-2.8.3-1cu128-cp312-cp312-win_amd64.whl
+python -m pip install .\flash_attn-2.8.3-1torch2p8p0cu128cuda12p8-cp312-cp312-win_amd64.whl
 ```
 
-CUDA 13 / `cu130` build:
+PyTorch `2.9.1+cu130`, CUDA toolkit `13.2` wheels:
 
 ```powershell
 python -m pip install torch==2.9.1+cu130 torchvision==0.24.1+cu130 torchaudio==2.9.1+cu130 --index-url https://download.pytorch.org/whl/cu130 --extra-index-url https://pypi.org/simple
-python -m pip install .\flash_attn-2.8.3-cp312-cp312-win_amd64.whl
+python -m pip install .\flash_attn-2.8.3-1torch2p9p1cu130cuda13p2-cp312-cp312-win_amd64.whl
 ```
 
 ## Verification
@@ -67,7 +69,7 @@ print(flash_attn.__version__)
 print(torch.__version__, torch.version.cuda)
 ```
 
-Expected stack for the `1cu128` wheel:
+Expected stack for `flash_attn-2.8.3-1torch2p8p0cu128cuda12p8-cp312-cp312-win_amd64.whl`:
 
 - `flash_attn`: `2.8.3`
 - `torch`: `2.8.0+cu128`
@@ -76,9 +78,9 @@ Expected stack for the `1cu128` wheel:
 ## Build Notes
 
 - Upstream source: `https://github.com/Dao-AILab/flash-attention`
-- The `1cu128` wheel was built on Windows in `.venv312` against a repo-local CUDA `12.8` toolkit assembled from NVIDIA redistrib archives under `cuda_12_8_redist/toolkit`
+- The CUDA 12.8 wheel was built on Windows in `.venv312` against a repo-local CUDA `12.8` toolkit assembled from NVIDIA redistrib archives under `cuda_12_8_redist/toolkit`
 - The Windows source build required a `setup.py` patch to add `/Zc:preprocessor` and `-allow-unsupported-compiler`
-- The `1cu128` wheel was verified locally on an RTX 3090 with CUDA forward and backward tests
+- The CUDA 12.8 wheel was verified locally on an RTX 3090 with CUDA forward and backward tests
 - Avoid validating from the repo root if possible, because the local `triton` directory in the build workspace can shadow Torch's Triton package
 
 ## License
