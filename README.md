@@ -4,22 +4,24 @@ Prebuilt Windows wheels for FlashAttention 2, built from upstream `flash-attenti
 
 All published wheels are stored directly at the repository root.
 
-The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used for the build:
+## Evidence Model
 
-- `torch2.8.0cu128cuda12.8` means PyTorch `2.8.0+cu128`, built with CUDA toolkit `12.8`
-- `torch2.9.1cu128cuda12.8` means PyTorch `2.9.1+cu128`, built with CUDA toolkit `12.8`
-- `torch2.9.1cu130cuda13.2` means PyTorch `2.9.1+cu130`, built with CUDA toolkit `13.2`
+- Wheel metadata directly proves:
+  - package version
+  - Python compatibility tag `cp312-cp312-win_amd64`
+- Wheel metadata does not pin an exact Torch version. It only records `Requires-Dist: torch`.
+- Exact Torch stack and CUDA toolkit version below come from local build provenance and byte-for-byte SHA256 matches to the original build artifacts in `wheelhouse`.
+- For the two legacy CUDA 13 wheels, the binary also directly embeds `Cuda compilation tools, release 13.2`.
 
 ## Published Wheels
 
 ### `flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
-- Python: `3.12.10`
-- PyTorch: `2.8.0+cu128`
-- torchvision: `0.23.0+cu128`
-- torchaudio: `2.8.0+cu128`
-- CUDA toolkit used to build: `12.8`
+- Python compatibility tag: `cp312-cp312-win_amd64`
+- Build/test environment provenance: Python `3.12.10`
+- Torch stack provenance: `torch==2.8.0+cu128`, `torchvision==0.23.0+cu128`, `torchaudio==2.8.0+cu128`
+- CUDA toolkit provenance: `12.8`
 - Target GPU architecture: Ampere (`sm_80`)
 - Size: `56,682,111` bytes
 - SHA256: `590f4a177466d17fe6085b2ed00f40f4a8e92d46bc6a41d63ce036727e547e93`
@@ -27,11 +29,10 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 ### `flash_attn-2.8.3-1torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
-- Python: `3.12.10`
-- PyTorch: `2.9.1+cu128`
-- torchvision: `0.24.1+cu128`
-- torchaudio: `2.9.1+cu128`
-- CUDA toolkit used to build: `12.8`
+- Python compatibility tag: `cp312-cp312-win_amd64`
+- Build/test environment provenance: Python `3.12.10`
+- Torch stack provenance: `torch==2.9.1+cu128`, `torchvision==0.24.1+cu128`, `torchaudio==2.9.1+cu128`
+- CUDA toolkit provenance: `12.8`
 - Target GPU architecture: Ampere (`sm_80`)
 - Size: `56,690,614` bytes
 - SHA256: `b94101f7ae37037335bbc51d60030870d6b7ac22282d166e11c84fff4705ceab`
@@ -39,18 +40,26 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 ### `flash_attn-2.8.3-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
-- Python: `3.12.10`
-- PyTorch: `2.9.1+cu130`
-- CUDA toolkit used to build: `13.2`
+- Python compatibility tag: `cp312-cp312-win_amd64`
+- Build/test environment provenance: Python `3.12.10`
+- Torch stack provenance: `torch==2.9.1+cu130`, `torchvision==0.24.1+cu130`, `torchaudio==2.9.1+cu130`
+- CUDA toolkit:
+  - direct binary evidence: `13.2`
+  - build provenance: `13.2`
+- Target GPU architecture: Ampere (`sm_80`)
 - Size: `57,035,463` bytes
 - SHA256: `e602dc8936abd714a2c51baa5f10ff81fb14473f26e9af00fe02d42c99ad2005`
 
 ### `flash_attn-2.8.1-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.1`
-- Python: `3.12.10`
-- PyTorch: `2.9.1+cu130`
-- CUDA toolkit used to build: `13.2`
+- Python compatibility tag: `cp312-cp312-win_amd64`
+- Build/test environment provenance: Python `3.12.10`
+- Torch stack provenance: `torch==2.9.1+cu130`, `torchvision==0.24.1+cu130`, `torchaudio==2.9.1+cu130`
+- CUDA toolkit:
+  - direct binary evidence: `13.2`
+  - build provenance: `13.2`
+- Target GPU architecture: Ampere (`sm_80`)
 - Size: `28,682,044` bytes
 - SHA256: `4507b92e3e9cb24acde3d50fb002ac0ea9b374f94bf6be3f315e7162e0a95fef`
 
@@ -58,25 +67,31 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 
 Install the matching PyTorch stack first.
 
-PyTorch `2.8.0+cu128`, CUDA toolkit `12.8` wheel:
+For `flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl`:
 
 ```powershell
 python -m pip install torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
 python -m pip install .\flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl
 ```
 
-PyTorch `2.9.1+cu128`, CUDA toolkit `12.8` wheel:
+For `flash_attn-2.8.3-1torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl`:
 
 ```powershell
 python -m pip install torch==2.9.1+cu128 torchvision==0.24.1+cu128 torchaudio==2.9.1+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
 python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl
 ```
 
-PyTorch `2.9.1+cu130`, CUDA toolkit `13.2` wheels:
+For the CUDA 13.2 wheels:
 
 ```powershell
 python -m pip install torch==2.9.1+cu130 torchvision==0.24.1+cu130 torchaudio==2.9.1+cu130 --index-url https://download.pytorch.org/whl/cu130 --extra-index-url https://pypi.org/simple
 python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl
+```
+
+If you specifically want `flash_attn==2.8.1` on the same stack:
+
+```powershell
+python -m pip install .\flash_attn-2.8.1-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl
 ```
 
 ## Verification
@@ -98,10 +113,10 @@ Expected stack for `flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_am
 ## Build Notes
 
 - Upstream source: `https://github.com/Dao-AILab/flash-attention`
-- The CUDA 12.8 wheel was built on Windows in `.venv312` against a repo-local CUDA `12.8` toolkit assembled from NVIDIA redistrib archives under `cuda_12_8_redist/toolkit`
-- There are two CUDA 12.8 `flash_attn==2.8.3` wheels at the repo root, one for `torch==2.8.0+cu128` and one for `torch==2.9.1+cu128`
+- The two CUDA 12.8 wheels were built on Windows in `.venv312` against a repo-local CUDA `12.8` toolkit assembled from NVIDIA redistrib archives under `cuda_12_8_redist/toolkit`
+- The two CUDA 13.2 wheels are the earlier legacy builds for the `torch==2.9.1+cu130` stack
 - The Windows source build required a `setup.py` patch to add `/Zc:preprocessor` and `-allow-unsupported-compiler`
-- The CUDA 12.8 wheel was verified locally on an RTX 3090 with CUDA forward and backward tests
+- The CUDA 12.8 wheels were verified locally on an RTX 3090 with CUDA forward and backward tests
 - Avoid validating from the repo root if possible, because the local `triton` directory in the build workspace can shadow Torch's Triton package
 
 ## License
