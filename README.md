@@ -6,13 +6,13 @@ All published wheels are stored directly at the repository root.
 
 The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used for the build:
 
-- `torch2.8.0cu128cuda12p8` means PyTorch `2.8.0+cu128`, built with CUDA toolkit `12.8`
-- `torch2.9.1cu128cuda12p8` means PyTorch `2.9.1+cu128`, built with CUDA toolkit `12.8`
-- `torch2.9.1cu130cuda13p2` means PyTorch `2.9.1+cu130`, built with CUDA toolkit `13.2`
+- `torch2.8.0cu128cuda12.8` means PyTorch `2.8.0+cu128`, built with CUDA toolkit `12.8`
+- `torch2.9.1cu128cuda12.8` means PyTorch `2.9.1+cu128`, built with CUDA toolkit `12.8`
+- `torch2.9.1cu130cuda13.2` means PyTorch `2.9.1+cu130`, built with CUDA toolkit `13.2`
 
 ## Published Wheels
 
-### `flash_attn-2.8.3-1torch2.8.0cu128cuda12p8-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
 - Python: `3.12.10`
@@ -24,7 +24,7 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 - Size: `56,682,111` bytes
 - SHA256: `590f4a177466d17fe6085b2ed00f40f4a8e92d46bc6a41d63ce036727e547e93`
 
-### `flash_attn-2.8.3-1torch2.9.1cu128cuda12p8-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.3-1torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
 - Python: `3.12.10`
@@ -36,7 +36,7 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 - Size: `56,690,614` bytes
 - SHA256: `b94101f7ae37037335bbc51d60030870d6b7ac22282d166e11c84fff4705ceab`
 
-### `flash_attn-2.8.3-1torch2.9.1cu130cuda13p2-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.3-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.3`
 - Python: `3.12.10`
@@ -45,7 +45,7 @@ The wheel build tag encodes the target PyTorch stack and the CUDA toolkit used f
 - Size: `57,035,463` bytes
 - SHA256: `e602dc8936abd714a2c51baa5f10ff81fb14473f26e9af00fe02d42c99ad2005`
 
-### `flash_attn-2.8.1-1torch2.9.1cu130cuda13p2-cp312-cp312-win_amd64.whl`
+### `flash_attn-2.8.1-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl`
 
 - Package version: `flash_attn==2.8.1`
 - Python: `3.12.10`
@@ -62,21 +62,21 @@ PyTorch `2.8.0+cu128`, CUDA toolkit `12.8` wheel:
 
 ```powershell
 python -m pip install torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
-python -m pip install .\flash_attn-2.8.3-1torch2.8.0cu128cuda12p8-cp312-cp312-win_amd64.whl
+python -m pip install .\flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl
 ```
 
 PyTorch `2.9.1+cu128`, CUDA toolkit `12.8` wheel:
 
 ```powershell
 python -m pip install torch==2.9.1+cu128 torchvision==0.24.1+cu128 torchaudio==2.9.1+cu128 --index-url https://download.pytorch.org/whl/cu128 --extra-index-url https://pypi.org/simple
-python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu128cuda12p8-cp312-cp312-win_amd64.whl
+python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl
 ```
 
 PyTorch `2.9.1+cu130`, CUDA toolkit `13.2` wheels:
 
 ```powershell
 python -m pip install torch==2.9.1+cu130 torchvision==0.24.1+cu130 torchaudio==2.9.1+cu130 --index-url https://download.pytorch.org/whl/cu130 --extra-index-url https://pypi.org/simple
-python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu130cuda13p2-cp312-cp312-win_amd64.whl
+python -m pip install .\flash_attn-2.8.3-1torch2.9.1cu130cuda13.2-cp312-cp312-win_amd64.whl
 ```
 
 ## Verification
@@ -89,7 +89,7 @@ print(flash_attn.__version__)
 print(torch.__version__, torch.version.cuda)
 ```
 
-Expected stack for `flash_attn-2.8.3-1torch2.8.0cu128cuda12p8-cp312-cp312-win_amd64.whl`:
+Expected stack for `flash_attn-2.8.3-1torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl`:
 
 - `flash_attn`: `2.8.3`
 - `torch`: `2.8.0+cu128`
