@@ -54,7 +54,7 @@ Expected baseline:
 
 ## Other Published Wheels
 
-Older Windows wheels remain available at repo root:
+Other Windows wheels remain available at repo root:
 
 - `flash_attn-2.8.3-torch2.8.0cu128cuda12.8-cp312-cp312-win_amd64.whl`
 - `flash_attn-2.8.3-torch2.9.1cu128cuda12.8-cp312-cp312-win_amd64.whl`
